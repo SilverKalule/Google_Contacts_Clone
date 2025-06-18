@@ -94,11 +94,11 @@ export default function Contacts({ contacts }: { contacts: contactProps[] }) {
                         <h2 className="flex-1">{contact.phoneNumber}</h2>
                       </div>
                       <div className="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <Star />
+                        <Star className="hidden" />
                         <a href={`/contact/update/${contact.id}`}>
                           <Pencil className="hover:text-blue-500" />
                         </a>
-                        <EllipsisVertical />
+                        <EllipsisVertical className="hidden" />
                       </div>
                     </div>
                   );

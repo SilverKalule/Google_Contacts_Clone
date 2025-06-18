@@ -98,3 +98,4 @@ export async function updateContactById(id: string, data: contactProps) {
     };
   }
 }
+
