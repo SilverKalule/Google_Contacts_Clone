@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/prisma/prisma";
+// import prisma from "@/prisma/prisma";
 import { contactProps } from "@/types/types";
 import { error } from "console";
 
@@ -98,4 +99,3 @@ export async function updateContactById(id: string, data: contactProps) {
     };
   }
 }
-
