@@ -7,6 +7,7 @@ import { createContact, updateContactById } from "@/actions/contacts";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { contact } from "@prisma/client";
+// import { contact } from "@prisma/client";
 
 export default function CreateContact({
   editingId,
