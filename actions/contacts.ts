@@ -4,6 +4,7 @@ import prisma from "@/prisma/prisma";
 // import prisma from "@/prisma/prisma";
 import { contactProps } from "@/types/types";
 import { error } from "console";
+import { revalidatePath } from "next/cache";
 
 export async function createContact(data: contactProps) {
   try {
@@ -29,6 +30,7 @@ export async function createContact(data: contactProps) {
     const newContact = await prisma.contact.create({
       data,
     });
+    revalidatePath("/");
     return { success: true, error: null };
   } catch (error) {
     console.log(error);
