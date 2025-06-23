@@ -17,8 +17,10 @@ import {
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { contactProps } from "@/types/types";
+import { contact } from "@prisma/client";
+import Image from "next/image";
 
-export default function Contacts({ contacts }: { contacts: contactProps[] }) {
+export default function Contacts({ contacts }: { contacts: contact[] }) {
   return (
     <div className="flex flex-col bg-gray-200 h-screen">
       <div className="flex justify-between items-center p-2 px-6 fixed w-full bg-gray-200 z-20">
@@ -84,9 +86,19 @@ export default function Contacts({ contacts }: { contacts: contactProps[] }) {
                     >
                       <div className="grid grid-cols-[_35%_35%_30%] p-1">
                         <div className="flex gap-4">
-                          <h2 className="w-6 h-6 rounded-full flex items-center justify-center text-white bg-blue-400 text-xl p-4">
-                            {contact.name.toString().toUpperCase()[0]}
-                          </h2>
+                          {contact.image ? (
+                            <Image
+                              src={contact.image}
+                              width={100}
+                              height={100}
+                              className="w-8 h-8 object-cover rounded-full"
+                              alt="contact image"
+                            />
+                          ) : (
+                            <h2 className="w-6 h-6 rounded-full flex items-center justify-center text-white bg-blue-400 text-xl p-4">
+                              {contact.name.toString().toUpperCase()[0]}
+                            </h2>
+                          )}
                           <h2>{contact.name}</h2>
                         </div>
 

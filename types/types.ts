@@ -3,4 +3,5 @@ export type contactProps = {
   name: string;
   email: string;
   phoneNumber: string;
+  image: string;
 };

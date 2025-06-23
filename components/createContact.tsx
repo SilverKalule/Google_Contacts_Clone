@@ -6,12 +6,16 @@ import { Button } from "./ui/button";
 import { createContact, updateContactById } from "@/actions/contacts";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { UploadButton } from "@/libs/uploadthing";
+import Image from "next/image";
+import ImageInput from "./ImageInput";
 // import { contact } from "@prisma/client";
 export type contact = {
   name: string;
   id: string;
   email: string;
   phoneNumber: string;
+  image: string | null;
   createdAt: Date;
 };
 export default function CreateContact({
@@ -35,8 +39,9 @@ export default function CreateContact({
   });
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
+  const [imageUrl, setImageUrl] = useState(initialData?.image || "");
   async function saveData(data: contactProps) {
+    data.image = imageUrl;
     setLoading(true);
     // console.log(data);
     if (editingId) {
@@ -97,6 +102,14 @@ export default function CreateContact({
             {...register("phoneNumber", { required: true })}
             type="text"
             className="border  border-gray-600"
+          />
+        </div>
+        <div className="">
+          <ImageInput
+            title="Contact Image"
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endpoint="imageUploader"
           />
         </div>
         <Button

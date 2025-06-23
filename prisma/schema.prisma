@@ -16,9 +16,9 @@ datasource db {
 
 model contact {
   id String @id @default(cuid())
-  name String @unique
+  name String
   email String
   phoneNumber String
+  image String?
   createdAt DateTime @default(now())
-
 }
